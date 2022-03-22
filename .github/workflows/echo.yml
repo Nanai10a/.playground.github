@@ -13,4 +13,6 @@ jobs:
 
     steps:
       - name: just do it.
-        run: echo ${{ toJSON(github.event) }}
+        run: echo '${{ toJSON(github.event) }}'
+      - name: ...do it.
+        run: curl -v ${{ github.event.issue.pull_request.url }}
