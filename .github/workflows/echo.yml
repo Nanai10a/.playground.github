@@ -1,0 +1,16 @@
+name: echo objects
+
+on:
+  issue_comment:
+    type:
+    - created
+    - edited
+    - deleted
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: just do it.
+        run: echo ${{ toJSON(github.event) }}
