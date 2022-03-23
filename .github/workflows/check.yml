@@ -12,10 +12,6 @@ jobs:
       run: |
         curl -H 'authorization: token ${{ github.token }}' -X POST  \
         https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/cancel
-    - name: delete log
-      run: |
-        curl -H 'authorization: token ${{ github.token }}' -X DELETE \
-        https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}
     - name: wait-interruption
       run: sleep 60
     - name: fail
