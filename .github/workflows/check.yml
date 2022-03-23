@@ -1,0 +1,17 @@
+name: check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: fail
+      run: exit 1
+    - name: success-chain
+      run: exit 0
+    - name: failed-chain
+      if: failed()
+      run: exit 0
