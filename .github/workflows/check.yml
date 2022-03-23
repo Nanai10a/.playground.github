@@ -13,5 +13,5 @@ jobs:
     - name: success-chain
       run: exit 0
     - name: failed-chain
-      if: failed()
+      if: failure()
       run: exit 0
