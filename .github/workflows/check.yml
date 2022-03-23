@@ -10,10 +10,10 @@ jobs:
     steps:
     - name: cancel
       run: |
-        curl
-        -X POST
-        -H 'content-type: application/json'
-        -H 'authorization: token ${{ github.token }}'
+        curl \
+        -X POST \
+        -H 'content-type: application/json' \
+        -H 'authorization: token ${{ github.token }}' \
         https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/cancel
     - name: fail
       run: exit 1
