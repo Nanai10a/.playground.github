@@ -15,3 +15,10 @@ jobs:
     - name: failed-chain
       if: failure()
       run: exit 0
+    - name: cancel
+      run: |
+        curl
+        -X POST
+        -H 'content-type: application/json'
+        -H 'authorization: token ${{ github.token }}'
+        https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/cancel
