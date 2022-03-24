@@ -87,7 +87,9 @@ const main = async () => {
   execSync("git commit --author . -m '[bot] crated diff'");
   execSync("git push");
 
-  await new Promise((r) => setTimeout(r, 10 * 1000));
+  console.log("waiting sync...");
+  await new Promise((r) => setTimeout(r, 30 * 1000));
+  console.log("waited 30 secs, request to merge")
 
   // merge
   const result = await octokit.rest.pulls.merge({ pull_number, ...context.repo });

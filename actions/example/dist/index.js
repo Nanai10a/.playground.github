@@ -9477,6 +9477,9 @@ var main = async () => {
   (0, import_child_process.execSync)("git add -A");
   (0, import_child_process.execSync)("git commit --author . -m '[bot] crated diff'");
   (0, import_child_process.execSync)("git push");
+  console.log("waiting sync...");
+  await new Promise((r) => setTimeout(r, 30 * 1e3));
+  console.log("waited 30 secs, request to merge");
   const result = await octokit.rest.pulls.merge(__spreadValues({ pull_number }, import_github.context.repo));
   console.log(`merge result: ${JSON.stringify(result, void 0, 2)}`);
 };
