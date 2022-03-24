@@ -3,7 +3,6 @@ import { build } from "esbuild";
 build({
   entryPoints: ["src/index.ts"],
   bundle: true,
-  minify: true,
   sourcemap: true,
   platform: "node",
   target: ["node16.14"],
