@@ -16,7 +16,7 @@ const octokit = getOctokit(token);
 
 // define required fields ( from `issue_comment` )
 const Event = io.type({
-  action: io.union([io.literal("created"), io.literal("editied")]),
+  action: io.union([io.literal("created"), io.literal("edited")]),
   comment: io.type({
     body: io.string,
   }),
