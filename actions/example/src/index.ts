@@ -87,9 +87,11 @@ const main = async () => {
   execSync("git commit --author . -m '[bot] crated diff'");
   execSync("git push");
 
+  await new Promise((r) => setTimeout(r, 10 * 1000));
+
   // merge
   const result = await octokit.rest.pulls.merge({ pull_number, ...context.repo });
-  console.log(`merge result: ${JSON.stringify(result, undefined, 2)}`)
+  console.log(`merge result: ${JSON.stringify(result, undefined, 2)}`);
 };
 
 type Event = io.TypeOf<typeof Event>;
