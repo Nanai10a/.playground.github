@@ -9495,7 +9495,7 @@ var checkPull = (p) => {
     case "closed":
       return false;
   }
-  if (p.base.ref !== "articles")
+  if (p.base.ref !== "master")
     return false;
   return true;
 };
