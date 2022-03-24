@@ -9432,7 +9432,7 @@ var token = (0, import_core.getInput)("token");
 var event = (0, import_core.getInput)("event");
 var octokit = (0, import_github.getOctokit)(token);
 var Event = io.type({
-  action: io.union([io.literal("created"), io.literal("editied")]),
+  action: io.union([io.literal("created"), io.literal("edited")]),
   comment: io.type({
     body: io.string
   }),
