@@ -17,4 +17,4 @@ jobs:
         uses: ./actions/example
         with:
           token: ${{ github.token }}
-          event: ${{ github.event }}
+          event: ${{ toJSON(github.event) }}
