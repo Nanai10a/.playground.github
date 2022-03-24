@@ -3,8 +3,8 @@ import type { PromiseType } from "utility-types";
 import { getInput, setFailed } from "@actions/core";
 import { context, getOctokit } from "@actions/github";
 import { isRight } from "fp-ts/Either";
-import io from "io-ts";
-import path from "path";
+import * as io from "io-ts";
+import * as path from "path";
 import { execSync } from "child_process";
 
 // import value from input fields of action
