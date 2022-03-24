@@ -4,10 +4,12 @@ description: Example Action
 inputs:
   token:
     description: actions token
-    required: true
+    required: false
+    default: ${{ github.token }}
   event:
     description: handle event
-    required: true
+    required: false
+    default: ${{ toJSON(github.event) }}
 
 runs:
   using: node16

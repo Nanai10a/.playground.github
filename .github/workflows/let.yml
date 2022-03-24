@@ -17,6 +17,3 @@ jobs:
           ref: another
       - name: let
         uses: ./actions/example
-        with:
-          token: ${{ github.token }}
-          event: ${{ toJSON(github.event) }}
