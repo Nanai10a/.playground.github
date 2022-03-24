@@ -1,0 +1,17 @@
+name: use local actions
+
+on:
+  issue_comment:
+    type:
+    - created
+    - edited
+
+jobs:
+  let:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: let
+        uses: ../../actions/example
