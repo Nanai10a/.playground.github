@@ -14,6 +14,6 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
         with:
-          ref: another
+          ref: another_3
       - name: let
         uses: ./actions/example
