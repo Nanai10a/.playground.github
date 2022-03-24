@@ -9486,7 +9486,7 @@ var main = async () => {
 var checkEvent = (e) => {
   if (e.issue.pull_request === void 0)
     return false;
-  const matched = e.comment.body.split("\n").map((l) => l.toLowerCase()).filter((l) => l === MERGE_COMMAND).length >= 1;
+  const matched = e.comment.body.split(/\r?\n/).map((l) => l.toLowerCase()).filter((l) => l === MERGE_COMMAND).length >= 1;
   if (!matched)
     return false;
   return true;

@@ -104,7 +104,7 @@ const checkEvent = (e: Event) => {
   // includes invoke command (non-case-sensitive)
   const matched =
     e.comment.body
-      .split("\n")
+      .split(/\r?\n/)
       .map((l) => l.toLowerCase())
       .filter((l) => l === MERGE_COMMAND).length >= 1;
   if (!matched) return false;
