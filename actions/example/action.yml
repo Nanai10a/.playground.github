@@ -6,7 +6,7 @@ inputs:
     description: actions token
     required: true
   event:
-    description: handle evnet
+    description: handle event
     required: true
 
 runs:
