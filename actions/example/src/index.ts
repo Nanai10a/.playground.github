@@ -120,7 +120,7 @@ const checkPull = (p: Pull) => {
   }
 
   // pull merge to `articles`
-  if (p.base.ref !== "articles") return false;
+  if (p.base.ref !== "master") return false;
 
   return true;
 };
