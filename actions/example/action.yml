@@ -1,0 +1,14 @@
+name: Example
+description: Example Action
+
+inputs:
+  token:
+    description: actions token
+    required: true
+  event:
+    description: handle evnet
+    required: true
+
+runs:
+  using: node16
+  main: dist/index.js
