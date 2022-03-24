@@ -1786,7 +1786,7 @@ var require_dist_node2 = __commonJS({
     }
     function expand(template, context2) {
       var operators = ["+", "#", ".", "/", ";", "?", "&"];
-      return template.replace(/\{([^\{\}]+)\}|([^\{\}]+)/g, function(_, expression, literal) {
+      return template.replace(/\{([^\{\}]+)\}|([^\{\}]+)/g, function(_, expression, literal2) {
         if (expression) {
           let operator = "";
           const values = [];
@@ -1810,7 +1810,7 @@ var require_dist_node2 = __commonJS({
             return values.join(",");
           }
         } else {
-          return encodeReserved(literal);
+          return encodeReserved(literal2);
         }
       });
     }
@@ -2118,8 +2118,8 @@ var require_tr46 = __commonJS({
       return null;
     }
     var regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
-    function countSymbols(string) {
-      return string.replace(regexAstralSymbols, "_").length;
+    function countSymbols(string2) {
+      return string2.replace(regexAstralSymbols, "_").length;
     }
     function mapChars(domain_name, useSTD3, processing_option) {
       var hasError = false;
@@ -2293,17 +2293,17 @@ var require_url_state_machine = __commonJS({
     function isWindowsDriveLetterCodePoints(cp1, cp2) {
       return isASCIIAlpha(cp1) && (cp2 === 58 || cp2 === 124);
     }
-    function isWindowsDriveLetterString(string) {
-      return string.length === 2 && isASCIIAlpha(string.codePointAt(0)) && (string[1] === ":" || string[1] === "|");
+    function isWindowsDriveLetterString(string2) {
+      return string2.length === 2 && isASCIIAlpha(string2.codePointAt(0)) && (string2[1] === ":" || string2[1] === "|");
     }
-    function isNormalizedWindowsDriveLetterString(string) {
-      return string.length === 2 && isASCIIAlpha(string.codePointAt(0)) && string[1] === ":";
+    function isNormalizedWindowsDriveLetterString(string2) {
+      return string2.length === 2 && isASCIIAlpha(string2.codePointAt(0)) && string2[1] === ":";
     }
-    function containsForbiddenHostCodePoint(string) {
-      return string.search(/\u0000|\u0009|\u000A|\u000D|\u0020|#|%|\/|:|\?|@|\[|\\|\]/) !== -1;
+    function containsForbiddenHostCodePoint(string2) {
+      return string2.search(/\u0000|\u0009|\u000A|\u000D|\u0020|#|%|\/|:|\?|@|\[|\\|\]/) !== -1;
     }
-    function containsForbiddenHostCodePointExcludingPercent(string) {
-      return string.search(/\u0000|\u0009|\u000A|\u000D|\u0020|#|\/|:|\?|@|\[|\\|\]/) !== -1;
+    function containsForbiddenHostCodePointExcludingPercent(string2) {
+      return string2.search(/\u0000|\u0009|\u000A|\u000D|\u0020|#|\/|:|\?|@|\[|\\|\]/) !== -1;
     }
     function isSpecialScheme(scheme) {
       return specialSchemes[scheme] !== void 0;
@@ -2653,8 +2653,8 @@ var require_url_state_machine = __commonJS({
     function cannotHaveAUsernamePasswordPort(url) {
       return url.host === null || url.host === "" || url.cannotBeABaseURL || url.scheme === "file";
     }
-    function isNormalizedWindowsDriveLetter(string) {
-      return /^[A-Za-z]:$/.test(string);
+    function isNormalizedWindowsDriveLetter(string2) {
+      return /^[A-Za-z]:$/.test(string2);
     }
     function URLStateMachine(input, base, encodingOverride, url, stateOverride) {
       this.pointer = 0;
@@ -3234,8 +3234,8 @@ var require_url_state_machine = __commonJS({
       if (url.cannotBeABaseURL) {
         output += url.path[0];
       } else {
-        for (const string of url.path) {
-          output += "/" + string;
+        for (const string2 of url.path) {
+          output += "/" + string2;
         }
       }
       if (url.query !== null) {
@@ -3720,9 +3720,9 @@ var require_lib2 = __commonJS({
           }
         }
         this[BUFFER] = Buffer.concat(buffers);
-        let type = options && options.type !== void 0 && String(options.type).toLowerCase();
-        if (type && !/[^\u0020-\u007E]/.test(type)) {
-          this[TYPE] = type;
+        let type2 = options && options.type !== void 0 && String(options.type).toLowerCase();
+        if (type2 && !/[^\u0020-\u007E]/.test(type2)) {
+          this[TYPE] = type2;
         }
       }
       get size() {
@@ -3788,10 +3788,10 @@ var require_lib2 = __commonJS({
       enumerable: false,
       configurable: true
     });
-    function FetchError(message, type, systemError) {
+    function FetchError(message, type2, systemError) {
       Error.call(this, message);
       this.message = message;
-      this.type = type;
+      this.type = type2;
       if (systemError) {
         this.code = this.errno = systemError.code;
       }
@@ -8273,8 +8273,8 @@ var require_lib3 = __commonJS({
       } else if (isKeyofC(domain)) {
         return domain.keys;
       } else if (isUnionC(domain)) {
-        var keys = domain.types.map(function(type2) {
-          return getDomainKeys(type2);
+        var keys = domain.types.map(function(type3) {
+          return getDomainKeys(type3);
         });
         return keys.some(undefinedType.is) ? void 0 : Object.assign.apply(Object, __spreadArrays([{}], keys));
       }
@@ -8337,8 +8337,8 @@ var require_lib3 = __commonJS({
       }, domain, codomain);
     }
     function getUnionName(codecs) {
-      return "(" + codecs.map(function(type2) {
-        return type2.name;
+      return "(" + codecs.map(function(type3) {
+        return type3.name;
       }).join(" | ") + ")";
     }
     function mergeAll(base, us) {
@@ -8381,8 +8381,8 @@ var require_lib3 = __commonJS({
         case "PartialType":
           return codec.props;
         case "IntersectionType":
-          return codec.types.reduce(function(props, type2) {
-            return Object.assign(props, getProps(type2));
+          return codec.types.reduce(function(props, type3) {
+            return Object.assign(props, getProps(type3));
           }, {});
       }
     }
@@ -8730,7 +8730,7 @@ var require_lib3 = __commonJS({
       return LiteralType2;
     }(Type);
     exports.LiteralType = LiteralType;
-    function literal(value, name) {
+    function literal2(value, name) {
       if (name === void 0) {
         name = JSON.stringify(value);
       }
@@ -8741,7 +8741,7 @@ var require_lib3 = __commonJS({
         return is(u) ? exports.success(value) : exports.failure(u, c);
       }, exports.identity, value);
     }
-    exports.literal = literal;
+    exports.literal = literal2;
     var KeyofType = function(_super) {
       __extends(KeyofType2, _super);
       function KeyofType2(name, is, validate, encode, keys) {
@@ -8769,9 +8769,9 @@ var require_lib3 = __commonJS({
     exports.keyof = keyof;
     var RefinementType = function(_super) {
       __extends(RefinementType2, _super);
-      function RefinementType2(name, is, validate, encode, type2, predicate) {
+      function RefinementType2(name, is, validate, encode, type3, predicate) {
         var _this = _super.call(this, name, is, validate, encode) || this;
-        _this.type = type2;
+        _this.type = type3;
         _this.predicate = predicate;
         _this._tag = "RefinementType";
         return _this;
@@ -8825,9 +8825,9 @@ var require_lib3 = __commonJS({
     exports.recursion = recursion;
     var ArrayType = function(_super) {
       __extends(ArrayType2, _super);
-      function ArrayType2(name, is, validate, encode, type2) {
+      function ArrayType2(name, is, validate, encode, type3) {
         var _this = _super.call(this, name, is, validate, encode) || this;
-        _this.type = type2;
+        _this.type = type3;
         _this._tag = "ArrayType";
         return _this;
       }
@@ -8881,7 +8881,7 @@ var require_lib3 = __commonJS({
       return InterfaceType2;
     }(Type);
     exports.InterfaceType = InterfaceType;
-    function type(props, name) {
+    function type2(props, name) {
       if (name === void 0) {
         name = getInterfaceTypeName(props);
       }
@@ -8940,8 +8940,8 @@ var require_lib3 = __commonJS({
         return s;
       }, props);
     }
-    exports.type = type;
-    exports.interface = type;
+    exports.type = type2;
+    exports.interface = type2;
     var PartialType = function(_super) {
       __extends(PartialType2, _super);
       function PartialType2(name, is, validate, encode, props) {
@@ -9043,7 +9043,7 @@ var require_lib3 = __commonJS({
       return UnionType2;
     }(Type);
     exports.UnionType = UnionType;
-    function union(codecs, name) {
+    function union2(codecs, name) {
       if (name === void 0) {
         name = getUnionName(codecs);
       }
@@ -9087,8 +9087,8 @@ var require_lib3 = __commonJS({
         }, codecs, tag_1);
       } else {
         return new UnionType(name, function(u) {
-          return codecs.some(function(type2) {
-            return type2.is(u);
+          return codecs.some(function(type3) {
+            return type3.is(u);
           });
         }, function(u, c) {
           var errors = [];
@@ -9113,7 +9113,7 @@ var require_lib3 = __commonJS({
         }, codecs);
       }
     }
-    exports.union = union;
+    exports.union = union2;
     var IntersectionType = function(_super) {
       __extends(IntersectionType2, _super);
       function IntersectionType2(name, is, validate, encode, types) {
@@ -9127,14 +9127,14 @@ var require_lib3 = __commonJS({
     exports.IntersectionType = IntersectionType;
     function intersection(codecs, name) {
       if (name === void 0) {
-        name = "(" + codecs.map(function(type2) {
-          return type2.name;
+        name = "(" + codecs.map(function(type3) {
+          return type3.name;
         }).join(" & ") + ")";
       }
       var len = codecs.length;
       return new IntersectionType(name, function(u) {
-        return codecs.every(function(type2) {
-          return type2.is(u);
+        return codecs.every(function(type3) {
+          return type3.is(u);
         });
       }, codecs.length === 0 ? exports.success : function(u, c) {
         var us = [];
@@ -9169,14 +9169,14 @@ var require_lib3 = __commonJS({
     exports.TupleType = TupleType;
     function tuple(codecs, name) {
       if (name === void 0) {
-        name = "[" + codecs.map(function(type2) {
-          return type2.name;
+        name = "[" + codecs.map(function(type3) {
+          return type3.name;
         }).join(", ") + "]";
       }
       var len = codecs.length;
       return new TupleType(name, function(u) {
-        return exports.UnknownArray.is(u) && u.length === len && codecs.every(function(type2, i) {
-          return type2.is(u[i]);
+        return exports.UnknownArray.is(u) && u.length === len && codecs.every(function(type3, i) {
+          return type3.is(u[i]);
         });
       }, function(u, c) {
         var e = exports.UnknownArray.validate(u, c);
@@ -9204,17 +9204,17 @@ var require_lib3 = __commonJS({
         }
         return errors.length > 0 ? exports.failures(errors) : exports.success(as);
       }, useIdentity(codecs) ? exports.identity : function(a) {
-        return codecs.map(function(type2, i) {
-          return type2.encode(a[i]);
+        return codecs.map(function(type3, i) {
+          return type3.encode(a[i]);
         });
       }, codecs);
     }
     exports.tuple = tuple;
     var ReadonlyType = function(_super) {
       __extends(ReadonlyType2, _super);
-      function ReadonlyType2(name, is, validate, encode, type2) {
+      function ReadonlyType2(name, is, validate, encode, type3) {
         var _this = _super.call(this, name, is, validate, encode) || this;
-        _this.type = type2;
+        _this.type = type3;
         _this._tag = "ReadonlyType";
         return _this;
       }
@@ -9230,9 +9230,9 @@ var require_lib3 = __commonJS({
     exports.readonly = readonly;
     var ReadonlyArrayType = function(_super) {
       __extends(ReadonlyArrayType2, _super);
-      function ReadonlyArrayType2(name, is, validate, encode, type2) {
+      function ReadonlyArrayType2(name, is, validate, encode, type3) {
         var _this = _super.call(this, name, is, validate, encode) || this;
-        _this.type = type2;
+        _this.type = type3;
         _this._tag = "ReadonlyArrayType";
         return _this;
       }
@@ -9248,14 +9248,14 @@ var require_lib3 = __commonJS({
     }
     exports.readonlyArray = readonlyArray;
     var strict = function(props, name) {
-      return exact(type(props), name);
+      return exact(type2(props), name);
     };
     exports.strict = strict;
     var ExactType = function(_super) {
       __extends(ExactType2, _super);
-      function ExactType2(name, is, validate, encode, type2) {
+      function ExactType2(name, is, validate, encode, type3) {
         var _this = _super.call(this, name, is, validate, encode) || this;
-        _this.type = type2;
+        _this.type = type3;
         _this._tag = "ExactType";
         return _this;
       }
@@ -9311,7 +9311,7 @@ var require_lib3 = __commonJS({
       if (name === void 0) {
         name = getUnionName(codecs);
       }
-      var U = union(codecs, name);
+      var U = union2(codecs, name);
       if (U instanceof TaggedUnionType) {
         return U;
       } else {
@@ -9425,23 +9425,23 @@ var require_lib3 = __commonJS({
 var import_core = __toESM(require_core());
 var import_github = __toESM(require_github());
 var import_Either = __toESM(require_Either());
-var import_io_ts = __toESM(require_lib3());
-var import_path = __toESM(require("path"));
+var io = __toESM(require_lib3());
+var path = __toESM(require("path"));
 var import_child_process = require("child_process");
 var token = (0, import_core.getInput)("token");
 var event = (0, import_core.getInput)("event");
 var octokit = (0, import_github.getOctokit)(token);
-var Event = import_io_ts.default.type({
-  action: import_io_ts.default.union([import_io_ts.default.literal("created"), import_io_ts.default.literal("editied")]),
-  comment: import_io_ts.default.type({
-    body: import_io_ts.default.string
+var Event = io.type({
+  action: io.union([io.literal("created"), io.literal("editied")]),
+  comment: io.type({
+    body: io.string
   }),
-  issue: import_io_ts.default.type({
-    pull_request: import_io_ts.default.union([
-      import_io_ts.default.type({
-        url: import_io_ts.default.string
+  issue: io.type({
+    pull_request: io.union([
+      io.type({
+        url: io.string
       }),
-      import_io_ts.default.undefined
+      io.undefined
     ])
   })
 });
@@ -9453,7 +9453,7 @@ var main = async () => {
   const decodedEvent = decoded.right;
   if (!checkEvent(decodedEvent))
     return await cancel();
-  const splitPrUrl = decodedEvent.issue.pull_request?.url.split(import_path.default.sep);
+  const splitPrUrl = decodedEvent.issue.pull_request?.url.split(path.sep);
   const pull_number = parseInt(splitPrUrl?.[splitPrUrl.length - 1] ?? "");
   if (pull_number <= 0)
     return await cancel();
