@@ -1,0 +1,13 @@
+name: schedule
+
+on:
+  schedule:
+    - cron: "15 7 * * *"
+
+jobs:
+  scheduled:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: automated
+        run: date
