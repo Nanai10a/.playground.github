@@ -1,0 +1,13 @@
+on: [workflow_call]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/setup@v3
+      
+    - name: install node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
