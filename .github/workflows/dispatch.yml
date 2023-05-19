@@ -1,7 +1,9 @@
 on: [workflow_dispatch]
 
 jobs:
-  runs-on:
-  steps:
-  - uses: .github/workflows/setup.yml@master
-  - run: node -v
+  dispatch:
+    uses: ./.github/workflows/setup.yml
+  using:
+    runs-on: ubuntu-latest
+    steps:
+    - run: node -v
