@@ -1,0 +1,12 @@
+on: [workflow_dispatch]
+
+jobs:
+  nightly-node-setup:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: setup
+      run: |
+        curl -s https://nodejs.org/download/nightly/index.json | jq -c '.[0].version' | xargs -I@ export VERSION=@
+        curl https://nodejs.org/download/nightly/$VERSION/node-$VERSION-linux-x64.tar.xz -o- | tar -x $VERSION/{bin,lib} -d /tmp/node-nightly
+        /tmp/node-nightly/$VERSION/bin/corepack -v
