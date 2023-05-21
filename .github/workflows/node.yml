@@ -9,8 +9,11 @@ jobs:
       run: |
         export VERSION=$(curl -s https://nodejs.org/download/nightly/index.json | jq -c '.[0].version' | sed 's/"//g')
         curl https://nodejs.org/download/nightly/$VERSION/node-$VERSION-linux-x64.tar.xz -o- | tar -xJC /tmp node-$VERSION-linux-x64/{bin,lib}
-        mv /tmp/node-$VERSION-linux-x64/{bin,lib} /tmp/nnode
-        rmdir /tmp/node-$VERSION-linux-x64
-        unset VERSION
+        mkdir /tmp/nnode  && mv /tmp/node-$VERSION-linux-x64/{bin,lib} /tmp/nnode
+        rmdir /tmp/node-$VERSION-linux-x64 && unset VERSION
         export NCOREPACK=/tmp/nnode/bin/corepack
         $NCOREPACK -v
+        echo $VERSION
+        ls /tmp
+        ls /tmp/nnode
+        ls
