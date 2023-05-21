@@ -8,5 +8,6 @@ jobs:
     - name: setup
       run: |
         export VERSION=$(curl -s https://nodejs.org/download/nightly/index.json | jq -c '.[0].version' | sed 's/"//g')
+        mkdir /tmp/node-nightly
         curl https://nodejs.org/download/nightly/$VERSION/node-$VERSION-linux-x64.tar.xz -o- | tar -xJC /tmp/node-nightly node-$VERSION-linux-x64/{bin,lib}
         /tmp/node-nightly/node-$VERSION-linux-x64/bin/corepack -v
