@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.6.0",
+    "@actions/core": "^1.9.1",
     "@actions/github": "^5.0.0",
     "fp-ts": "^2.11.9",
     "io-ts": "^2.2.16"
