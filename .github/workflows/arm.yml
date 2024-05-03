@@ -5,9 +5,20 @@ on:
 
 jobs:
   arm64:
-    name: Arm64
-    runs-on: macos-latest
+    name: arm64 on x86_64
+    runs-on: ubuntu-latest
 
     steps:
-    - name: available docker?
-      run: docker run archlinuxarm makepkg -V
+    - name: test no working aarch64
+      continue-on-error: true
+      uses: docker://docker.io/menci/archlinuxarm:base-devel
+      with:
+        args: makepkg -V
+
+    - name: setup arm64 sim
+      uses: docker://docker.io/multiarch/qemu-user-static:aarch64
+
+    - name: test working aarch64
+      uses: docker://docker.io/menci/archlinuxarm:base-devel
+      with:
+        args: makepkg -V
