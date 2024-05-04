@@ -11,17 +11,13 @@ jobs:
     steps:
     - name: test no working aarch64
       continue-on-error: true
-      uses: docker://docker.io/menci/archlinuxarm:base-devel
-      with:
-        entrypoint: /usr/bin/makepkg
-        args: -V
+      run: |
+        docker run --platform linux/aarch64 --rm              menci/archlinuxarm:base-devel /usr/bin/makepkg -V
 
     - name: setup arm64 sim
       run: |
-        docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+        docker run --platform linux/amd64   --rm --privileged multiarch/qemu-user-static    --reset -p yes
 
     - name: test working aarch64
-      uses: docker://docker.io/menci/archlinuxarm:base-devel
-      with:
-        entrypoint: /usr/bin/makepkg
-        args: -V
+      run: |
+        docker run --platform linux/aarch64 --rm              menci/archlinuxarm:base-devel /usr/bin/makepkg -V
