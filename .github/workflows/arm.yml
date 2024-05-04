@@ -17,9 +17,8 @@ jobs:
         args: -V
 
     - name: setup arm64 sim
-      uses: docker://docker.io/multiarch/qemu-user-static:aarch64
+      uses: docker://docker.io/multiarch/qemu-user-static:latest
       with:
-        entrypoint: /register
         args: --reset -p yes
 
     - name: test working aarch64
