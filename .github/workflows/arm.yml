@@ -17,9 +17,8 @@ jobs:
         args: -V
 
     - name: setup arm64 sim
-      uses: docker://docker.io/multiarch/qemu-user-static:latest
-      with:
-        args: --reset -p yes
+      run: |
+        docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 
     - name: test working aarch64
       uses: docker://docker.io/menci/archlinuxarm:base-devel
