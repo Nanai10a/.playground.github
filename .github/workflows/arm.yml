@@ -13,14 +13,17 @@ jobs:
       continue-on-error: true
       uses: docker://docker.io/menci/archlinuxarm:base-devel
       with:
-        args: makepkg -V
+        entrypoint: /usr/bin/makepkg
+        args: -V
 
     - name: setup arm64 sim
       uses: docker://docker.io/multiarch/qemu-user-static:aarch64
       with:
+        entrypoint: /register
         args: --reset -p yes
 
     - name: test working aarch64
       uses: docker://docker.io/menci/archlinuxarm:base-devel
       with:
-        args: makepkg -V
+        entrypoint: /usr/bin/makepkg
+        args: -V
